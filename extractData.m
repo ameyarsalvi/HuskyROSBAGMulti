@@ -37,7 +37,7 @@ which_topic.axis_camera
         tf_staticStructs = readMessages(tf_static,'DataFormat','struct');
         tf_static_var = [tf_staticStructs{:,1}];
         for i = 1:length(tf_var)
-            pass
+            %pass
         end
     else
         %pass
