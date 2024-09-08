@@ -12,6 +12,7 @@ which_topic.js
 which_topic.cmd_vel
 which_topic.odom
 which_topic.axis_camera
+which_topic.zed_camera
     %}
 
     if which_topic.axis_camera == 1
@@ -23,11 +24,16 @@ which_topic.axis_camera
         image_strct= readMessages(cam_images,'DataFormat','struct');
         for i =1:length(image_strct)
             image= rosReadImage(image_strct{i,1});
-            imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',num2str(i),'.jpg'));
+            img_path = fullfile(pwd, img_folder, strcat(num2str(i), '.jpg'));
+            %imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',num2str(i),'.jpg'));
+            imwrite(uint8(image), img_path);
+            data.image{i} = img_path;
         end          
     else
         %pass
     end
+
+  
     
     if which_topic.tf == 1
         tf = select(bag,'Topic','/tf');

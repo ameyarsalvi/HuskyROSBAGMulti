@@ -5,6 +5,7 @@ function TSyn = timeSync(sensor,k,Sync_topics)
 % Sync_topics.gps = 1;
 % Sync_topics.IMU_fil_AngZ = 1;
 %Sync_topics.gps_head = 1;
+%Sync_topics.images = 1;
 
 for i=1:k
     timeArray = sensor(i).time.joint_states;
@@ -65,6 +66,17 @@ for i=1:k
 
         TSyn(i).data.pos_x = sensor(i).data.odom_PosX(closestIndex);
         TSyn(i).data.pos_y = sensor(i).data.odom_PosY(closestIndex);
+
+    end
+
+    if Sync_topics.images ==1
+        sensorTimestamp = sensor(i).time.odom;
+        
+        for j = 1:length(timeArray)
+            [~,closestIndex(j)] = min(abs(sensorTimestamp-timeArray(j)));
+        end
+
+        TSyn(i).data.images = sensor(i).data.image(closestIndex);
 
     end
 
