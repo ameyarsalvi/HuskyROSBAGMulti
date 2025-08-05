@@ -11,6 +11,8 @@ function TSyn = timeSync(sensor,k,Sync_topics)
 % Sync_topics.status =1;
 % Sync_topics.IMU_AngZ = 1;
 % Sync_topics.IMU_LinX = 1;
+%Sync_topics.cmd_V = 1;
+%Sync_topics.cmd_OMG = 1;
 
 for i=1:k
     timeArray = sensor(i).time.joint_states;
@@ -20,6 +22,22 @@ for i=1:k
         for j = 1:length(timeArray)
             [~,closestIndex] = min(abs(sensorTimestamp-timeArray(j)));
             TSyn(i).data.IMU_AngZ(j) = sensor(i).data.IMU_AngZ(closestIndex);
+        end
+    end
+
+    if Sync_topics.cmd_OMG ==1
+        sensorTimestamp = sensor(i).time.imu;
+        for j = 1:length(timeArray)
+            [~,closestIndex] = min(abs(sensorTimestamp-timeArray(j)));
+            TSyn(i).data.cmd_OMG(j) = sensor(i).data.cmd_VelAngZ(closestIndex);
+        end
+    end
+
+    if Sync_topics.cmd_V ==1
+        sensorTimestamp = sensor(i).time.imu;
+        for j = 1:length(timeArray)
+            [~,closestIndex] = min(abs(sensorTimestamp-timeArray(j)));
+            TSyn(i).data.cmd_V(j) = sensor(i).data.cmd_VelLinX(closestIndex);
         end
     end
 

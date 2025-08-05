@@ -93,7 +93,7 @@ which_topic.status == 1
         image_strct= readMessages(cam_images,'DataFormat','struct');
         for i =1:length(image_strct)
             image= rosReadImage(image_strct{i,1});
-            imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg'));
+            %imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg'));
             data.image_no{i} = strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg');
         end
         time.axis_camera = [cam_images.MessageList{:,1}];
