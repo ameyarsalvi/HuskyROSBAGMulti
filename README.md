@@ -11,8 +11,10 @@ The primary file requires :
 6. ``` xICR.m ``` : (Optional) compute the X cooridinate of ICR. Needs extremely accurate GPS 
 
 
-## Datasets
 Following datasets/ROSBags were collected when working towards my dissertaion (circa 2020 - 2025). Please contact asalvi@clemson.edu to get access to any of the dataset. All datasets can be parsed using the Matlab based data extraction code provided above.
+
+
+## Dynamics Datasets
 
 ### x. Rocky Terrain (Jan 29, 2023)
 
@@ -21,16 +23,6 @@ Drive Link : https://drive.google.com/drive/folders/140V68WBoQtFlgO6YT5m-Z0Be8mb
 << Add representative Image(s) >>
 
 Straight light manuever of the Huksy on a rocky terrain for gathering IMU response
-
-### x. Random bags archive (Feb 7, 2023)
-
-Drive Link (a) : https://drive.google.com/drive/folders/1Y5H8sA1-CamXb5Aa9EJUgplRTjtZvnmd?usp=sharing
-Drive Link (b) : https://drive.google.com/drive/folders/1ku7YIHg4hDkvfTfauAiI_1oKkLHrTve8?usp=sharing 
-
-Archiving random bags for slam/ teloperation/ data parsing for exploring Husky Characteristics
-
-> Available topics
-    > All
 
 
 ### x. Different Terrains (June 16, 2023)
@@ -159,11 +151,27 @@ Drive Link : https://drive.google.com/drive/folders/1QIbzQzrDYprZnF_INdYAizJsj32
 
 ### x. Mixture Model Identification datasets (July 2024)
 
-Drive Link (July 3) :
-Drive Link (July 5) :
-Drive Link (July 11):
+Drive Link (July 3) : https://drive.google.com/drive/folders/1_vqYlMoCXqULTLRuvXKri7TkboGu_8sC?usp=sharing
+Drive Link (July 5) : https://drive.google.com/drive/folders/1LU6L6NwquKaxFShKvWIsm8h5bE_o6EbR?usp=sharing
+Drive Link (July 11) : https://drive.google.com/drive/folders/1D9-b524Y-Yg6d6bqcMFxmglKDV-mA_HZ?usp=sharing
 
 
 ### x. Extended Skidpad for simulator tuning (Sept 21/23 2024)
 
 Drive Link : https://drive.google.com/drive/folders/1R5kQL7F6gGLBh3oBs8bkDhJhJy0m1kB7?usp=sharing
+
+
+
+## Vision Dataset/ Runs
+
+
+## Miscellaneous Data
+### x. Random bags archive (Feb 7, 2023)
+
+Drive Link (a) : https://drive.google.com/drive/folders/1Y5H8sA1-CamXb5Aa9EJUgplRTjtZvnmd?usp=sharing
+Drive Link (b) : https://drive.google.com/drive/folders/1ku7YIHg4hDkvfTfauAiI_1oKkLHrTve8?usp=sharing 
+
+Archiving random bags for slam/ teloperation/ data parsing for exploring Husky Characteristics
+
+> Available topics
+    > All
