@@ -19,6 +19,7 @@ Following datasets/ROSBags were collected when working towards my dissertaion (c
 ### x. Rocky Terrain (Jan 29, 2023)
 
 Drive Link : https://drive.google.com/drive/folders/140V68WBoQtFlgO6YT5m-Z0Be8mbpEPj3?usp=sharing
+(~4.2 gb)
 
 << Add representative Image(s) >>
 
