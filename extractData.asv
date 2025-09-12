@@ -113,7 +113,7 @@ which_topic.april_pose = 1;
         image_strct= readMessages(cam_images,'DataFormat','struct');
         for i =1:length(image_strct)
             image= rosReadImage(image_strct{i,1});
-            imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg'));
+            %imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg'));
             data.image_no{i} = strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg');
         end
         time.axis_camera = [cam_images.MessageList{:,1}];
@@ -136,63 +136,24 @@ which_topic.april_pose = 1;
     else
         %pass
     end
-    
-    %{
+
     if which_topic.april_pose == 1
         tag = select(bag,'Topic','/apriltag_min_pose/poses');
         tagStructs = readMessages(tag,'DataFormat','struct');
-        %tag_var = [tagStructs{:,1}];
-        if isempty(tagStructs)
-            %pass
-        else
-            tag_var = [tagStructs{:,1}];
-            data.tag_varPX = [tag_var.Poses.Position.X];
-            data.tag_varPY = [tag_var.Poses.Position.Y];
-            data.tag_varPZ = [tag_var.Poses.Position.Z];
-            data.tag_varQX = [tag_var.Poses.Orientation.X];
-            data.tag_varQY = [tag_var.Poses.Orientation.Y];
-            data.tag_varQZ = [tag_var.Poses.Orientation.Z];
-            data.tag_varQW = [tag_var.Poses.Orientation.W];
-            time.tag_var = [tag_var.MessageList{:,1}];
+        tag_var = [tagStructs{:,1}];
+        for i = 1:length(tag_var)
+            data.tag_varPX = tag_var(i).Poses.Position.X;
+            data.tag_varPY = tag_var(i).Poses.Position.Y;
+            data.tag_varPZ = tag_var(i).Poses.Position.Z;
+            data.tag_varQX = tag_var(i).Poses.Orientation.X;
+            data.tag_varQY = tag_var(i).Poses.Orientation.Y;
+            data.tag_varQZ = tag_var(i).Poses.Orientation.Z;
+            data.tag_varQW = tag_var(i).Poses.Orientation.W;
+            time.tag_var = 
         end
     else
         %pass
     end
-    %}
-
-    if which_topic.april_pose == 1
-        tag = select(bag,'Topic','/apriltag_min_pose/poses');
-        tagMsgs = readMessages(tag,'DataFormat','struct');
-    
-        if isempty(tagMsgs)
-            % nothing to do
-        else
-            % 1) Flatten all Pose arrays across messages
-            posesCell = cellfun(@(m) m.Poses, tagMsgs, 'UniformOutput', false);  % 1xN cells, each is 1xK_i struct
-            allPoses  = [posesCell{:}];  % 1x(sum K_i) struct array of geometry_msgs/Pose
-    
-            % 2) Extract positions and orientations
-            allPos   = [allPoses.Position];      % struct array with fields X,Y,Z
-            allOri   = [allPoses.Orientation];   % struct array with fields X,Y,Z,W
-    
-            data.tag_varPX = [allPos.X].';
-            data.tag_varPY = [allPos.Y].';
-            data.tag_varPZ = [allPos.Z].';
-    
-            data.tag_varQX = [allOri.X].';
-            data.tag_varQY = [allOri.Y].';
-            data.tag_varQZ = [allOri.Z].';
-            data.tag_varQW = [allOri.W].';
-    
-            % 3) Build per-pose timestamps aligned with the flattened poses
-            % Each message time repeated by number of poses in that message
-            msgTimes = tag.MessageList.Time;                       % Nx1 datetime (rosbag)
-            counts   = cellfun(@(m) numel(m.Poses), tagMsgs);      % Nx1 counts
-            timeCells = arrayfun(@(t,c) repmat(t, c, 1), msgTimes, counts, 'UniformOutput', false);
-            time.tag_var = vertcat(timeCells{:});                  % sum(K_i) x 1 datetime
-        end
-    end
-
 
 
     if which_topic.gps_pos == 1
