@@ -165,6 +165,28 @@ Drive Link : https://drive.google.com/drive/folders/1R5kQL7F6gGLBh3oBs8bkDhJhJy0
 
 ## Vision Dataset/ Runs
 
+Datasets collected primarily for diffusion training
+
+### x. Driving Rig Lane Keeping dataset (Jul 27, 2025)
+
+Drive Link : https://drive.google.com/drive/u/1/folders/1W2jeuOZydfJ1VKoV44SRHsh1tsabZT6X
+
+### x. Off-road / CGEC Parking lot dataset (Dec 31, 2024)
+
+Drive Link : https://drive.google.com/drive/u/1/folders/1zKW6OX9xo5xUCrTdWPhi-ihdMdiwN2-W
+
+### x. Balcony random cones teleop dataset - cam calibration (Dec 30, 2024)
+
+Drive Link : https://drive.google.com/drive/u/1/folders/187cnhs5odGsi8RQDCEzn1BiyJ-a_6tgL
+
+
+### x. Husky Visual Nav experiemnts used for training (Nov 12, 2024)
+
+Drive Link : https://drive.google.com/drive/u/1/folders/1SgPmVCvgAAdERyveNyUZX1ZojEVdDhBd
+
+### x. Simulation Dataset with moving camera
+
+Drive Link : https://drive.google.com/drive/u/1/folders/1fAkbwGGDIzvBOG8k4r-c_hyzfgkq2yty
 
 ## Miscellaneous Data
 ### x. Random bags archive (Feb 7, 2023)
