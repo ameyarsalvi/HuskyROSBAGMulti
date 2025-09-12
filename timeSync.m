@@ -13,6 +13,8 @@ function TSyn = timeSync(sensor,k,Sync_topics)
 % Sync_topics.IMU_LinX = 1;
 %Sync_topics.cmd_V = 1;
 %Sync_topics.cmd_OMG = 1;
+%Sync_topics.usb_images = 1;
+%Sync_topics.april_poses = 1;
 
 for i=1:k
     timeArray = sensor(i).time.joint_states;
@@ -41,6 +43,25 @@ for i=1:k
         end
     end
 
+    %%% april poses %%%
+    
+    if Sync_topics.april_poses ==1
+        sensorTimestamp = sensor(i).time.tag_var;
+        for j = 1:length(timeArray)
+            [~,closestIndex] = min(abs(sensorTimestamp-timeArray(j)));
+            TSyn(i).data.april_posePX(j) = sensor(i).data.tag_varPX(closestIndex);
+            TSyn(i).data.april_posePY(j) = sensor(i).data.tag_varPY(closestIndex);
+            TSyn(i).data.april_posePZ(j) = sensor(i).data.tag_varPZ(closestIndex);
+            TSyn(i).data.april_poseQX(j) = sensor(i).data.tag_varQX(closestIndex);
+            TSyn(i).data.april_poseQY(j) = sensor(i).data.tag_varQY(closestIndex);
+            TSyn(i).data.april_poseQZ(j) = sensor(i).data.tag_varQZ(closestIndex);
+            TSyn(i).data.april_poseQW(j) = sensor(i).data.tag_varQW(closestIndex);
+        end
+    end
+    
+    
+    
+    %%%
 
     if Sync_topics.IMU_LinX ==1
         sensorTimestamp = sensor(i).time.imu;
@@ -123,6 +144,17 @@ for i=1:k
         end
 
         TSyn(i).data.image_no = sensor(i).data.image_no(closestIndex);
+
+    end
+
+     if Sync_topics.usb_images ==1
+        sensorTimestamp = sensor(i).time.usb_cam;
+        
+        for j = 1:length(timeArray)
+            [~,closestIndex(j)] = min(abs(sensorTimestamp-timeArray(j)));
+        end
+
+        TSyn(i).data.usb_image_no = sensor(i).data.usb_image_no(closestIndex);
 
     end
 

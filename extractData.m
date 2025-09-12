@@ -61,9 +61,9 @@ which_topic.april_pose = 1;
         for i =1:length(image_strct)
             image= rosReadImage(image_strct{i,1});
             imwrite(uint8(image), strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg'));
-            data.rs_image_no{i} = strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg');
+            data.usb_image_no{i} = strcat(pwd,'\',img_folder,'\',img_folder,'_',num2str(i),'.jpg');
         end
-        time.rs_camera = [cam_images.MessageList{:,1}];
+        time.usb_cam = [cam_images.MessageList{:,1}];
     else
         %pass
     end
