@@ -17,22 +17,22 @@ Following datasets/ROSBags were collected when working towards my dissertaion (c
 More topics can be introduced by modification of the  ``` extractData.m ``` script
 
 `
-which_topic.tf
-which_topic.gps_head
-which_topic.gps_pos
-which_topic.imu
-which_topic.imu_fil
-which_topic.js
-which_topic.cmd_vel
-which_topic.odom
-which_topic.axis_camera
-which_topic.realsense_camera_rgb
-which_topic.realsense_camera_d
-which_topic.camera_pan
-which_topic.axis_info 
-which_topic.status
-which_topic.usb_cam
-which_topic.april_pose
+>which_topic.tf
+>which_topic.gps_head
+>which_topic.gps_pos
+>which_topic.imu
+>which_topic.imu_fil
+>which_topic.js
+>which_topic.cmd_vel
+>which_topic.odom
+>which_topic.axis_camera
+>which_topic.realsense_camera_rgb
+>which_topic.realsense_camera_d
+>which_topic.camera_pan
+>which_topic.axis_info
+>which_topic.status
+>which_topic.usb_cam
+>which_topic.april_pose
 `
 ## Dynamics Datasets
 
